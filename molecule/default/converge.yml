@@ -1,0 +1,8 @@
+---
+# tasks file for Converge role_template
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include urup.role_template"
+      include_role:
+        name: "urup.role_template"

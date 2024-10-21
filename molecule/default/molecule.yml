@@ -1,0 +1,15 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: instance
+    image: ubuntu:24.10
+    dockerfile: Dockerfile.j2
+    pre_build_image: false
+    privileged: true
+provisioner:
+  name: ansible
+verifier:
+  name: testinfra

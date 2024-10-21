@@ -1,0 +1,30 @@
+---
+# tasks file for role_template
+- name: install some packages
+  apt:
+    name: "{{ item.name}}={{item.version}}"
+    update_cache: yes
+  with_items:
+    - { name: 'htop', version: '3.3.0-4build1'}
+
+- name: add webapp user
+  ansible.builtin.user:
+    name: webapp
+    system: true
+
+- name: create an app directory owned by webapp
+  ansible.builtin.file:
+    path: /opt/webapp
+    state: directory
+    owner: webapp
+    group: webapp
+
+- name: create app.conf owned by webapp
+  ansible.builtin.file:
+    path: /opt/webapp/app.conf
+    state: touch
+    owner: webapp
+    group: webapp
+    mode: '0755'
+    access_time: preserve
+    modification_time: preserve
