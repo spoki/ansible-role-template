@@ -1,0 +1,6 @@
+ansible==10.5.0
+molecule==24.9.0
+molecule-plugins[docker]
+ansible-lint
+flake8
+pytest-testinfra
